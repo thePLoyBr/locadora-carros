@@ -5,12 +5,9 @@
         <group>
             <file>file:/home/felipe/NetBeansProjects/locCarros/src/java/br/com/theploy/loccarros/util/FabricaConexao.java</file>
             <file>file:/home/felipe/NetBeansProjects/locCarros/web/index.xhtml</file>
-            <file>file:/home/felipe/NetBeansProjects/locCarros/src/java/br/com/theploy/loccarros/DAO/ClienteDAO.java</file>
             <file>file:/home/felipe/NetBeansProjects/locCarros/src/java/br/com/theploy/loccarros/bean/CarroBean.java</file>
             <file>file:/home/felipe/NetBeansProjects/locCarros/src/java/br/com/theploy/loccarros/DAO/CarroDAO.java</file>
-            <file>file:/home/felipe/NetBeansProjects/locCarros/src/java/br/com/theploy/loccarros/bean/ClienteBean.java</file>
             <file>file:/home/felipe/NetBeansProjects/locCarros/src/java/br/com/theploy/loccarros/entidade/Carro.java</file>
-            <file>file:/home/felipe/NetBeansProjects/locCarros/src/java/br/com/theploy/loccarros/entidade/Cliente.java</file>
         </group>
     </open-files>
 </project-private>

@@ -8,20 +8,31 @@ package br.com.theploy.loccarros.bean;
 import br.com.theploy.loccarros.DAO.CarroDAO;
 import br.com.theploy.loccarros.entidade.Carro;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author felipe
  */
-@ManagedBean
-@SessionScoped 
-public class CarroBean {
+@ManagedBean(name="controllerCarro")
+@SessionScoped
+public class CarroBean implements Serializable{
     private Carro carro = new Carro();
+    private CarroDAO  carroDAO = new CarroDAO();
+    private List<Carro> carros = new ArrayList<Carro>();
 
     public void adicionar(){
-        new CarroDAO().salvar(carro);
+        carroDAO.salvar(carro);
+        carros = carroDAO.buscar();
+        carro = new Carro();
+    }
+    
+    public void listar(){
+        carros = carroDAO.buscar(); 
     }
     
     public Carro getCarro() {
@@ -30,6 +41,22 @@ public class CarroBean {
 
     public void setCarro(Carro carro) {
         this.carro = carro;
+    }
+
+    public CarroDAO getCarroDAO() {
+        return carroDAO;
+    }
+
+    public void setCarroDAO(CarroDAO carroDAO) {
+        this.carroDAO = carroDAO;
+    }
+
+    public List<Carro> getCarros() {
+        return carros;
+    }
+
+    public void setCarros(List<Carro> carros) {
+        this.carros = carros;
     }
     
     

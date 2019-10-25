@@ -5,12 +5,15 @@
  */
 package br.com.theploy.loccarros.entidade;
 
+import java.util.Objects;
+
 /**
  *
  * @author felipe
  */
 public class Carro {
     
+    private Integer id;
     private String modelo;
     private String marca;
     private String cor;
@@ -47,6 +50,40 @@ public class Carro {
     public void setKm(double km) {
         this.km = km;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Carro other = (Carro) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
 }

@@ -48,18 +48,33 @@
                 <h:form>
                     <h:panelGrid columns="4" cellspacing="10">
                         <h:outputLabel value="Modelo:"/>
-                        <p:inputText placeholder="Ex: Pálio Fire" value="#{carroBean.carro.modelo}"/>
+                        <p:inputText placeholder="Ex: Pálio Fire" value="#{controllerCarro.carro.modelo}"/>
                         <h:outputLabel value="Marca:"/>
-                        <p:inputText placeholder="Ex: Fiat" value="#{carroBean.carro.marca}"/>
+                        <p:inputText placeholder="Ex: Fiat" value="#{controllerCarro.carro.marca}"/>
                         <h:outputLabel value="Cor:"/>
-                        <p:inputText value="#{carroBean.carro.cor}"/>
+                        <p:inputText value="#{controllerCarro.carro.cor}"/>
                         <h:outputLabel value="KM:"/>
-                        <p:inputText value="#{carroBean.carro.km}"/>
-
-
-                        <p:commandButton value="Cadastrar" action="#{carroBean.adicionar()}" update="@form"/>
+                        <p:inputText value="#{controllerCarro.carro.km}"/>
+                        <p:commandButton value="Cadastrar" action="#{controllerCarro.adicionar()}" update="@form"/>
+                        <p:commandButton value="Buscar" action="#{controllerCarro.listar()}" update="@form" />
                     </h:panelGrid>
                 </h:form>
+                
+                <p:dataTable value="#{controllerCarro.carros}" var="carroLocal">
+                    <p:column headerText="ID" sortBy="#{carroLocal.id}">
+                        <h:outputText value="#{carroLocal.id}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="MODELO" sortBy="#{carroLocal.modelo}">
+                        <h:outputText value="#{carroLocal.modelo}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="MARCA" sortBy="#{carroLocal.marca}">
+                        <h:outputText value="#{carroLocal.marca}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="COR" sortBy="#{carroLocal.cor}">
+                        <h:outputText value="#{carroLocal.cor}"></h:outputText>
+                    </p:column>
+
+                </p:dataTable>
             </p:tab>
 
         </p:tabView>
