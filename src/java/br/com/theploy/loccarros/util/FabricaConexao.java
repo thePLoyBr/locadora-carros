@@ -20,7 +20,7 @@ public class FabricaConexao {
     private static Connection conexao;
     private static final String URL = "jdbc:mysql://localhost/locCarros";
     private static final String USUARIO = "root";
-    private static final String SENHA = "123456";
+    private static final String SENHA = "";
 
     public static Connection getConexao() {
         if (conexao == null) {

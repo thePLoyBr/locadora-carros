@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 /**
  *
@@ -23,7 +22,7 @@ import javax.faces.bean.ViewScoped;
 public class CarroBean implements Serializable{
     private Carro carro = new Carro();
     private CarroDAO  carroDAO = new CarroDAO();
-    private List<Carro> carros = new ArrayList<Carro>();
+    private List<Carro> carros = new ArrayList<>();
 
     public void adicionar(){
         carroDAO.salvar(carro);

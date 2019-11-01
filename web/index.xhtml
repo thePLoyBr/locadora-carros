@@ -20,13 +20,13 @@
                         <p:inputText placeholder="buscar cliente..." value=""/>
                         <h:outputLabel value="Data"/>
                         <p:inputMask mask="99/99/9999"/>
-                        
-                        
+
+
                         <h:outputLabel value="Veículo"/>
                         <p:inputText placeholder="buscar veículo..." value=""/>
                         <h:outputLabel value="Data Entrega"/>
                         <p:inputMask mask="99/99/9999"/>
-                        
+
 
                     </h:panelGrid>
                 </h:form>
@@ -36,11 +36,24 @@
                 <h:form>
                     <h:panelGrid columns="5" cellspacing="10">
                         <h:outputLabel value="Nome do Cliente:"/>
-                        <p:inputText placeholder="Digite o nome do cliente" value="#{clienteBean.cliente.nome}"/>
+                        <p:inputText placeholder="Digite o nome do cliente" value="#{controllerCliente.cliente.nome}"/>
                         <h:outputLabel value="Idade Cliente:"/>
-                        <p:inputText placeholder="Digite a idade do cliente" value="#{clienteBean.cliente.idade}"/>
-                        <p:commandButton value="Cadastrar" action="#{clienteBean.adicionar()}" update="@form"/>
+                        <p:inputText placeholder="Digite a idade do cliente" value="#{controllerCliente.cliente.idade}"/>
+                        <p:commandButton value="Cadastrar" action="#{controllerCliente.adicionar()}" update="@form"/>
+                        <p:commandButton value="Buscar" action="#{controllerCliente.listar()}" update="@form" />
                     </h:panelGrid>
+    
+                    <p:dataTable value="#{controllerCliente.clientes}" var="clienteLocal">
+                        <p:column headerText="ID" sortBy="#{clienteLocal.id}">
+                            <h:outputText value="#{clienteLocal.id}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="NOME" sortBy="#{clienteLocal.nome}">
+                            <h:outputText value="#{clienteLocal.nome}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="IDADE" sortBy="#{clienteLocal.idade}">
+                            <h:outputText value="#{clienteLocal.idade}"></h:outputText>
+                        </p:column>
+                    </p:dataTable>
                 </h:form>
             </p:tab>
 
@@ -58,23 +71,24 @@
                         <p:commandButton value="Cadastrar" action="#{controllerCarro.adicionar()}" update="@form"/>
                         <p:commandButton value="Buscar" action="#{controllerCarro.listar()}" update="@form" />
                     </h:panelGrid>
-                </h:form>
-                
-                <p:dataTable value="#{controllerCarro.carros}" var="carroLocal">
-                    <p:column headerText="ID" sortBy="#{carroLocal.id}">
-                        <h:outputText value="#{carroLocal.id}"></h:outputText>
-                    </p:column>
-                    <p:column headerText="MODELO" sortBy="#{carroLocal.modelo}">
-                        <h:outputText value="#{carroLocal.modelo}"></h:outputText>
-                    </p:column>
-                    <p:column headerText="MARCA" sortBy="#{carroLocal.marca}">
-                        <h:outputText value="#{carroLocal.marca}"></h:outputText>
-                    </p:column>
-                    <p:column headerText="COR" sortBy="#{carroLocal.cor}">
-                        <h:outputText value="#{carroLocal.cor}"></h:outputText>
-                    </p:column>
+                    <p:dataTable value="#{controllerCarro.carros}" var="carroLocal">
+                        <p:column headerText="ID" sortBy="#{carroLocal.id}">
+                            <h:outputText value="#{carroLocal.id}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="MODELO" sortBy="#{carroLocal.modelo}">
+                            <h:outputText value="#{carroLocal.modelo}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="MARCA" sortBy="#{carroLocal.marca}">
+                            <h:outputText value="#{carroLocal.marca}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="COR" sortBy="#{carroLocal.cor}">
+                            <h:outputText value="#{carroLocal.cor}"></h:outputText>
+                        </p:column>
 
-                </p:dataTable>
+                    </p:dataTable>
+                </h:form>
+
+
             </p:tab>
 
         </p:tabView>

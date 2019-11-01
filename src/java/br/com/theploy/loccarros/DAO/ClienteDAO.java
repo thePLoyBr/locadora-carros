@@ -9,7 +9,10 @@ import br.com.theploy.loccarros.entidade.Cliente;
 import br.com.theploy.loccarros.util.FabricaConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +31,29 @@ public class ClienteDAO {
             FabricaConexao.fecharConexao();
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public List<Cliente> buscar() {
+        try {
+            Connection conexao = FabricaConexao.getConexao();
+            PreparedStatement ps = conexao.prepareStatement("SELECT * FROM `clientes`");
+            ResultSet rs = ps.executeQuery();
+            List<Cliente> clientes = new ArrayList<>();
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setIdade(rs.getInt("idade"));
+
+                clientes.add(cliente);
+            }
+            return clientes;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CarroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
 }

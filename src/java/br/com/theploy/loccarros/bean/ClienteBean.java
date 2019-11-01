@@ -6,7 +6,11 @@
 package br.com.theploy.loccarros.bean;
 
 import br.com.theploy.loccarros.DAO.ClienteDAO;
+import br.com.theploy.loccarros.entidade.Carro;
 import br.com.theploy.loccarros.entidade.Cliente;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -14,13 +18,22 @@ import javax.faces.bean.SessionScoped;
  *
  * @author felipe
  */
-@ManagedBean
+@ManagedBean(name="controllerCliente")
 @SessionScoped
-public class ClienteBean {
+public class ClienteBean implements Serializable{
     private Cliente cliente = new Cliente();
+    ClienteDAO clienteDAO = new ClienteDAO();
+    private List<Cliente> clientes = new ArrayList<>();
 
     public void adicionar(){
-        new ClienteDAO().salvar(cliente);
+        clienteDAO.salvar(cliente);
+        clientes = clienteDAO.buscar();
+        cliente = new Cliente();
+        
+    }
+    
+    public void listar(){
+        clientes = clienteDAO.buscar(); 
     }
     
     public Cliente getCliente() {
@@ -29,6 +42,14 @@ public class ClienteBean {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
     }
     
     
